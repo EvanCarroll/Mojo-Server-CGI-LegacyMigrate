@@ -16,15 +16,18 @@ my %WriteMakefileArgs = (
     TEST_REQUIRES => {
         'Test::More' => '0',
     },
-    resources => {
-      license    => ['http://www.opensource.org/licenses/artistic-license-2.0'],
-      bugtracker => {web => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate/issues'},
-      repository => {
-        type => 'git',
-        url  => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate.git',
-        web  => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate',
-      },
-    },
+    (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
+       'meta-spec' => { version => 2 },
+       license    => ['http://www.opensource.org/licenses/artistic-license-2.0'],
+       bugtracker => {web => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate/issues'},
+       repository => {
+         type => 'git',
+         url  => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate.git',
+         web  => 'https://github.com/EvanCarroll/Mojo-Server-CGI-LegacyMigrate',
+       },
+       })
+    : ()
+    ),
     PREREQ_PM => {
         'Mojolicious'  => '2.8'
     },
